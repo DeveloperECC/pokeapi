@@ -1,14 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Explorador Pokémon</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Pronto pokeapi</h1>
-    <script src="script.js"></script>
-    
+
+    <main id="app">
+        <!-- Contenido dinámico -->
+    </main>
+
+    <nav class="c-nav">
+        <button onclick="cargarCatalogo()">Catálogo</button>
+        <button onclick="verMisFavoritos()">Mis Favoritos</button>
+        <button onclick="buscarAleatorio()">Sorpresa</button>
+        <button onclick="verMiColeccion()">Mi Colección</button>
+        <button onclick="mostrarPerfil()">Perfil</button>
+    </nav>
+
+    <!-- Archivos JS (misma estructura, nuevos nombres) -->
+    <script src="js/conexionApi.js"></script>
+    <script src="js/pokemonAleatorio.js"></script>
+    <script src="js/pokemonAtrapados.js"></script>
+    <script src="js/pokemonFavoritos.js"></script>
+    <script src="js/catalogoPokemon.js"></script>
+    <script src="js/detallePokemon.js"></script>
+    <script src="js/perfilUsuario.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", cargarCatalogo);
+    </script>
+
 </body>
 </html>
