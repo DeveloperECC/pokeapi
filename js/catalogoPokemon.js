@@ -1,22 +1,26 @@
-function mostrarLista(catalogoPokemon){
+// catalogoPokemon.js
+function mostrarLista(catalogoPokemon) {
     const app = document.getElementById("app");
+    app.innerHTML = '<h1 class="titulo-catalogo">Catálogo Pokémon</h1>';
     
-    let Pokes = " ";
-
     const seccion = document.createElement("section");
-    seccion.classList.add("c-lista"); 
+    seccion.classList.add("lista-pokemon");
 
-    for (let i = 0; i < catalogoPokemon.length; i++) {
-        let id = catalogoPokemon[i].url.split("/")[6];
-        Pokes += `
-        <div class="c-lista-pokemon poke-${id}" onclick="mostrarDetalle('${catalogoPokemon[i].name}')">
-            <p>#${id}</p>
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png" width="auto" height="60" loading="lazy" alt="${listaPokes[i].name}">
-            <p>${catalogoPokemon[i].name}</p>
-        </div>`;
-    }
-    seccion.innerHTML = Pokes;
+    catalogoPokemon.forEach((pokemon, index) => {
+        const id = index + 1;
+        const pokemonElement = document.createElement("div");
+        pokemonElement.className = "pokemon-card";
+        pokemonElement.innerHTML = `
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png" 
+                 alt="${pokemon.name}" class="pokemon-img">
+            <div class="pokemon-info">
+                <p class="pokemon-id">#${id.toString().padStart(3, '0')}</p>
+                <p class="pokemon-name">${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
+            </div>
+        `;
+        pokemonElement.addEventListener('click', () => mostrarDetalle(pokemon.name));
+        seccion.appendChild(pokemonElement);
+    });
     
-    /*app.appendChild(buscador);*/
     app.appendChild(seccion);
 }
